@@ -20,24 +20,11 @@ function tag($tag,$txt){
     return "<{$tag}>" . $txt . "</{$tag}>";
 }
 
-class HelloController extends Controller
-{
+class HelloController extends Controller{
     public function index(){
-        global $head, $style, $body, $end;
-
-        $html = $head . tag('title','Hello/Index') . $style . $body
-            . tag('h1','Index') . tag('p','this is Index page')
-            . '<a href="/hello/other"> go to Other page</a>'
-            . $end;
-        return $html;
-    }
-
-    public function other(){
-        global $head, $style, $body, $end;
-
-        $html = $head . tag('title','Hello/other') . $style . $body
-            . tag('h1','Index') . tag('p','this is Index page')
-            . $end;
-        return $html;
+       $data = [
+           'msg'=>'これはBladeを利用したサンプルです。',
+       ];
+       return view('hello.index', $data);
     }
 }
